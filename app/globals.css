@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 6%;
+    --foreground: 0 0% 95%;
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 95%;
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 0 100% 27%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 43 63% 52%;
+    --secondary-foreground: 0 0% 10%;
+    --muted: 0 0% 16%;
+    --muted-foreground: 0 0% 55%;
+    --accent: 43 63% 52%;
+    --accent-foreground: 0 0% 10%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 16%;
+    --input: 0 0% 16%;
+    --ring: 0 100% 27%;
+    --radius: 0.5rem;
+    --font-playfair: 'Playfair Display', Georgia, serif;
+    --font-inter: 'Inter', system-ui, sans-serif;
+  }
+
+  * {
+    @apply border-border;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-dark-bg text-foreground;
+    font-family: var(--font-inter);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-playfair);
+  }
+}
+
+@layer components {
+  .gold-divider {
+    @apply relative flex items-center justify-center my-8;
+  }
+
+  .gold-divider::before,
+  .gold-divider::after {
+    content: '';
+    @apply flex-1 h-px bg-gradient-to-r from-transparent to-gold/40;
+  }
+
+  .gold-divider::after {
+    @apply bg-gradient-to-l;
+  }
+
+  .gold-divider-icon {
+    @apply text-gold mx-4 text-xl;
+  }
+
+  .section-title {
+    @apply font-serif text-3xl md:text-4xl lg:text-5xl text-white mb-4;
+  }
+
+  .section-subtitle {
+    @apply text-gold/80 text-sm tracking-widest uppercase mb-6;
+    font-family: var(--font-inter);
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 bg-chinese-red hover:bg-chinese-red-400 text-white px-8 py-3 text-sm tracking-widest uppercase transition-all duration-300 border border-chinese-red hover:border-chinese-red-400;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center gap-2 bg-transparent hover:bg-gold/10 text-gold border border-gold px-8 py-3 text-sm tracking-widest uppercase transition-all duration-300;
+  }
+
+  .card-premium {
+    @apply bg-dark-card border border-dark-border hover:border-gold/30 transition-all duration-300;
+  }
+
+  .chinese-pattern-bg {
+    background-image: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 40px,
+      rgba(212, 175, 55, 0.03) 40px,
+      rgba(212, 175, 55, 0.03) 41px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 40px,
+      rgba(212, 175, 55, 0.03) 40px,
+      rgba(212, 175, 55, 0.03) 41px
+    );
+  }
+
+  .text-gradient-gold {
+    @apply bg-gradient-to-r from-gold-300 via-gold to-gold-300 bg-clip-text text-transparent;
+  }
+
+  .nav-link {
+    @apply text-white/70 hover:text-gold transition-colors duration-200 text-sm tracking-widest uppercase;
+    font-family: var(--font-inter);
+  }
+
+  .admin-sidebar-link {
+    @apply flex items-center gap-3 px-4 py-3 text-sm text-white/60 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-200 w-full;
+  }
+
+  .admin-sidebar-link.active {
+    @apply text-gold bg-gold/10 border border-gold/20;
+  }
+}
+
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #0F0F0F; }
+::-webkit-scrollbar-thumb { background: #2A2A2A; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #D4AF37; }
+
+/* Selection */
+::selection { background: rgba(139, 0, 0, 0.4); color: #fff; }
